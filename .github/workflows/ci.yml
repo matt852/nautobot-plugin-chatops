@@ -21,7 +21,7 @@ jobs:
         id: "cache-poetry"
         with:
           path: "$HOME/.cache/pypoetry/virtualenvs"
-          key: "poetry-environment"
+          key: "{{ runner.os }}-poetry-environment"
       - name: "Install environment"
         if: "steps.cached-poetry.outputs.cache-hit != 'true'"
         run: "poetry install"
