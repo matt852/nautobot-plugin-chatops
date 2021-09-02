@@ -27,31 +27,33 @@ jobs:
         run: "poetry install"
       - name: "List files"
         run: "ls -al $HOME/.cache/pypoetry/virtualenvs"
-  restore:
-    runs-on: "ubuntu-20.04"
-    steps:
-      - name: "Check out repository code"
-        uses: "actions/checkout@v2"
-      - name: "Set up Python"
-        uses: "actions/setup-python@v2"
-        with:
-          python-version: "3.9"
-
-      - name: "Cache"
-        uses: actions/cache@v2
-        with:
-          path: "$HOME/.cache/pypoetry/virtualenvs"
-          key: "poetry-environment"
-      - name: "List files"
-        run: "ls -al $HOME/.cache"
-      - name: "Install Poetry"
-        run: "pip install poetry"
-      - name: "Install environment"
-        run: "poetry install"
       - name: "Exit"
         run: "exit 1"
-    needs:
-      "setup"
+  # restore:
+  #   runs-on: "ubuntu-20.04"
+  #   steps:
+  #     - name: "Check out repository code"
+  #       uses: "actions/checkout@v2"
+  #     - name: "Set up Python"
+  #       uses: "actions/setup-python@v2"
+  #       with:
+  #         python-version: "3.9"
+
+  #     - name: "Cache"
+  #       uses: actions/cache@v2
+  #       with:
+  #         path: "$HOME/.cache/pypoetry/virtualenvs"
+  #         key: "poetry-environment"
+  #     - name: "List files"
+  #       run: "ls -al $HOME/.cache"
+  #     - name: "Install Poetry"
+  #       run: "pip install poetry"
+  #     - name: "Install environment"
+  #       run: "poetry install"
+  #     - name: "Exit"
+  #       run: "exit 1"
+  #   needs:
+  #     "setup"
   black:
     runs-on: "ubuntu-20.04"
     env:
@@ -68,7 +70,7 @@ jobs:
       - name: "Linting: black"
         run: "invoke black"
     needs:
-      - "restore"
+      - "setup"
   bandit:
     runs-on: "ubuntu-20.04"
     env:
