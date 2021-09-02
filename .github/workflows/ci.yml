@@ -23,7 +23,7 @@ jobs:
           path: "$HOME/.cache/pypoetry/virtualenvs"
           key: "{{ runner.os }}-poetry-environment"
       - name: "List files"
-        run: "ls -al $HOME/.cache/pypoetry/virtualenvs"
+        run: "ls -al $HOME/.cache/pypoetry"
       - name: "debug"
         run: "echo ${{ steps.cached-poetry.outputs.cache-hit }}"
       - name: "Install environment"
