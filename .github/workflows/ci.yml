@@ -31,7 +31,6 @@ jobs:
         run: "poetry install"
       - name: "List files"
         run: "ls -al ~/.cache/pypoetry/virtualenvs"
-
   restore:
     runs-on: "ubuntu-20.04"
     steps:
