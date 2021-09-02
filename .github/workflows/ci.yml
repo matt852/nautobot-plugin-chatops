@@ -7,7 +7,6 @@ on:
 jobs:
   setup:
     runs-on: "ubuntu-20.04"
-    id: "setup-step"
     steps:
       - name: "Check out repository code"
         uses: "actions/checkout@v2"
